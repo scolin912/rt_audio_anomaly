@@ -8,10 +8,10 @@ The purpose of this project is **not to achieve the highest possible accuracy**,
 
 ## 🎯 What This Project Does
 
-- Detects **dog barking**, **screaming**, and **gunshot-like** audio events
+- Detects **dog barking**, **screaming**, and **gunshot-like** audio events  
 - Uses **live microphone input**
-  - Audio can come from the surrounding environment
-  - Or sound effects played from an external device (e.g. iPhone)
+  - Audio can come from the surrounding environment  
+  - Or sound effects played from an external device (e.g. an iPhone)
 - Runs **streaming inference** using sliding audio windows
 - Includes practical logic for:
   - Event onset detection
@@ -33,6 +33,20 @@ This POC focuses on the kinds of behaviors that matter when AI models interact w
 > Model choice here is pragmatic.  
 > The emphasis is on **real-time system behavior**, not offline benchmarking or leaderboard scores.
 
+### 📥 Model Download (Required)
+
+The pretrained model file is **not included in this repository** due to size constraints.
+
+Before running the demo, please download the PANNs Cnn14 checkpoint and place it at:
+
+```text
+~/panns_data/Cnn14_mAP=0.431.pth
+```
+
+You can obtain the model from the official PANNs resources or mirrors used by the `panns-inference` package.
+
+> Keeping model files out of the repository helps keep the repo lightweight and focused on system-level logic.
+
 ---
 
 ## 🏗 Project Structure
@@ -41,7 +55,7 @@ This POC focuses on the kinds of behaviors that matter when AI models interact w
 rt_audio_anomaly/
 ├── README.md
 ├── audio effect.wav        # Sample audio / sound effects
-├── models/                 # Pretrained model files (path configurable)
+├── models/                 # (Optional) model-related configs or notes
 ├── src/                    # Real-time inference scripts
 ├── experiments/            # Experiments and variations
 └── notes/                  # Design notes and observations
@@ -61,7 +75,7 @@ python3 src/rt_mic_target_events_panns.py \
 ```
 
 - Audio device index depends on your local setup  
-- Use `sounddevice.query_devices()` to list available input devices
+- Use `sounddevice.query_devices()` or `--list_devices` (if supported) to list available input devices
 
 ---
 
@@ -79,7 +93,7 @@ Offline metrics alone rarely reflect real-world performance.
 
 This POC explores the gap between:
 
-- Offline ML evaluation
+- Offline ML evaluation  
 - Real-time, streaming, hardware-facing systems
 
 Starting around **2026**, more AI-powered hardware systems are expected to move from concepts into real-world products.  
