@@ -57,8 +57,6 @@ rt_audio_anomaly/
 ├── audio effect.wav        # Sample audio / sound effects
 ├── models/                 # (Optional) model-related configs or notes
 ├── src/                    # Real-time inference scripts
-├── experiments/            # Experiments and variations
-└── notes/                  # Design notes and observations
 ```
 
 ---
